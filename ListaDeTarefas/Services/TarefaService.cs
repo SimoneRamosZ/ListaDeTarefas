@@ -23,4 +23,24 @@ public class TarefaService : ITarefaService
     {
         return await _dbContext.Tarefas.ToListAsync();
     }
+
+    public async Task<Tarefa?> AtualizarTarefa(int id, Tarefa tarefa)
+    {
+        var tarefaEncontrada = await _dbContext.Tarefas.
+            FirstOrDefaultAsync(t => t.Id == id);
+        
+        if (tarefaEncontrada == null)
+            return null;
+
+        tarefaEncontrada.Titulo = tarefa.Titulo;
+        tarefaEncontrada.Descricao = tarefa.Descricao;
+        tarefaEncontrada.Concluido = tarefa.Concluido;
+
+        if (tarefaEncontrada.Concluido)
+            tarefaEncontrada.DataConclusao = DateTime.UtcNow;
+
+        await _dbContext.SaveChangesAsync();
+
+        return tarefaEncontrada;
+    }
 }
