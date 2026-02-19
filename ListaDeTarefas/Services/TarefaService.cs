@@ -43,4 +43,18 @@ public class TarefaService : ITarefaService
 
         return tarefaEncontrada;
     }
+
+    public async Task<int> DeletarTarefa(int id)
+    {
+        var tarefaEncontrada = await _dbContext.Tarefas.FirstOrDefaultAsync(t => t.Id == id);
+
+        if (tarefaEncontrada == null)
+            return 0;
+        
+        _dbContext.Tarefas.Remove(tarefaEncontrada);
+
+        await _dbContext.SaveChangesAsync();
+
+        return tarefaEncontrada.Id;
+    }
 }

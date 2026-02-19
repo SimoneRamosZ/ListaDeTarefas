@@ -38,4 +38,15 @@ public class TarefaController : ControllerBase
 
         return Ok();
     }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeletarTarefa(int id)
+    {
+        var idTarefaDeletada = await _service.DeletarTarefa(id);
+        
+        if(idTarefaDeletada == 0)
+            return NotFound($"Tarefa não encontrada para o id: {id}");
+
+        return Ok("Tarefa deletada com sucesso");
+    }
 }
