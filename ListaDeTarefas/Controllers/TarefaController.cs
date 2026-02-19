@@ -27,6 +27,17 @@ public class TarefaController : ControllerBase
         var tarefas = await _service.BuscarTodasTarefas();
         return Ok(tarefas);
     }
+    
+    [HttpGet("{id}")]
+    public async Task<ActionResult<List<Tarefa>>> BuscarTarefa(int id)
+    {
+        var tarefaEncontrada = await _service.BuscarTarefa(id);
+        
+        if (tarefaEncontrada == null)
+            return NotFound($"Tarefa não encontrada para o id: {id}");
+
+        return Ok(tarefaEncontrada);
+    }
 
     [HttpPut("{id}")]
     public async Task<ActionResult> AtualizarTarefa(int id, [FromBody] Tarefa tarefa)

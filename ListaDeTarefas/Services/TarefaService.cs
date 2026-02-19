@@ -24,6 +24,16 @@ public class TarefaService : ITarefaService
         return await _dbContext.Tarefas.ToListAsync();
     }
 
+    public async Task<Tarefa?> BuscarTarefa(int id)
+    {
+        var tarefaEncontrada = await _dbContext.Tarefas.FirstOrDefaultAsync(t => t.Id == id);
+
+        if (tarefaEncontrada == null)
+            return null;
+
+        return tarefaEncontrada;
+    }
+
     public async Task<Tarefa?> AtualizarTarefa(int id, Tarefa tarefa)
     {
         var tarefaEncontrada = await _dbContext.Tarefas.
