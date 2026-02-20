@@ -1,5 +1,6 @@
 using ListaDeTarefas.Models;
 using ListaDeTarefas.Services;
+using ListaDeTarefas.Validators;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ListaDeTarefas.Controllers;
@@ -15,8 +16,17 @@ public class TarefaController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create([FromBody] Tarefa tarefa)
+    public async Task<ActionResult> CriarTarefa([FromBody] Tarefa tarefa)
     {
+        var validator = new TarefaValidator();
+        var result = await validator.ValidateAsync(tarefa);
+
+        if (!result.IsValid)
+        {
+            var erros = string.Join(", ", result.Errors.Select(e => e.ErrorMessage));
+            throw new Exception(erros);
+        }
+        
         await _service.CriarTarefa(tarefa);
         return Ok();
     }
