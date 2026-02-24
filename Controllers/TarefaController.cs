@@ -1,11 +1,13 @@
 using ListaDeTarefas.Models;
 using ListaDeTarefas.Services;
 using ListaDeTarefas.Validators;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ListaDeTarefas.Controllers;
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class TarefaController : ControllerBase
 {
     private readonly ITarefaService _service;
