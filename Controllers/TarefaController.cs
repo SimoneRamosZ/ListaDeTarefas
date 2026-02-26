@@ -1,4 +1,5 @@
 using ListaDeTarefas.Models;
+using ListaDeTarefas.Models.Dtos;
 using ListaDeTarefas.Services;
 using ListaDeTarefas.Validators;
 using Microsoft.AspNetCore.Authorization;
@@ -16,50 +17,73 @@ public class TarefaController : ControllerBase
     {
         _service = service;
     }
-
+    
     [HttpPost]
-    public async Task<ActionResult> CriarTarefa([FromBody] Tarefa tarefa)
+    public async Task<ActionResult<TarefaResponse>> CriarTarefa([FromBody] CriarTarefaRequest request)
     {
         var validator = new TarefaValidator();
-        var result = await validator.ValidateAsync(tarefa);
+        var result = await validator.ValidateAsync(request);
 
         if (!result.IsValid)
+            return BadRequest(result.Errors.Select(e => e.ErrorMessage));
+
+        var tarefa = new Tarefa
         {
-            var erros = string.Join(", ", result.Errors.Select(e => e.ErrorMessage));
-            throw new Exception(erros);
-        }
-        
+            Titulo = request.Titulo,
+            Descricao = request.Descricao,
+            Concluido = false,
+            DataCriacao = DateTime.UtcNow
+        };
+
         await _service.CriarTarefa(tarefa);
-        return Ok();
+
+        var response = new TarefaResponse(
+            tarefa.Id,
+            tarefa.Titulo,
+            tarefa.Descricao,
+            tarefa.Concluido
+        );
+        return Ok(response);
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Tarefa>>> BuscarTarefas()
+    public async Task<ActionResult<IEnumerable<TarefaResponse>>> BuscarTarefas()
     {
         var tarefas = await _service.BuscarTodasTarefas();
-        return Ok(tarefas);
+
+        var response = tarefas
+            .Select(t => new TarefaResponse(
+                t.Id,
+                t.Titulo,
+                t.Descricao,
+                t.Concluido))
+            .ToList();
+
+        return Ok(response);
     }
     
     [HttpGet("{id}")]
     public async Task<ActionResult<List<Tarefa>>> BuscarTarefa(int id)
     {
         var tarefaEncontrada = await _service.BuscarTarefa(id);
+
+        var tarefaResponse = tarefaEncontrada?.ToResponse();
         
-        if (tarefaEncontrada == null)
+        if (tarefaResponse == null)
             return NotFound($"Tarefa não encontrada para o id: {id}");
 
-        return Ok(tarefaEncontrada);
+        return Ok(tarefaResponse);
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult> AtualizarTarefa(int id, [FromBody] Tarefa tarefa)
+    public async Task<ActionResult> AtualizarTarefa(int id, [FromBody] AtualizarTarefaRequest request)
     {
-        var tarefaEncontrada = await _service.AtualizarTarefa(id, tarefa);
+        var atualizado = await _service.AtualizarTarefa(id, request);
 
-        if (tarefaEncontrada == null)
+        if (atualizado is null)
             return NotFound($"Tarefa não encontrada para o id: {id}");
 
-        return Ok();
+        return NoContent();
     }
 
     [HttpDelete("{id}")]

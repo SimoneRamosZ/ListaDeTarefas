@@ -1,9 +1,10 @@
 using FluentValidation;
 using ListaDeTarefas.Models;
+using ListaDeTarefas.Models.Dtos;
 
 namespace ListaDeTarefas.Validators;
 
-public class TarefaValidator : AbstractValidator<Tarefa>
+public class TarefaValidator : AbstractValidator<CriarTarefaRequest>
 {
     public TarefaValidator()
     {

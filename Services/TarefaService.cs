@@ -1,5 +1,6 @@
 using ListaDeTarefas.Data;
 using ListaDeTarefas.Models;
+using ListaDeTarefas.Models.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace ListaDeTarefas.Services;
@@ -34,7 +35,7 @@ public class TarefaService : ITarefaService
         return tarefaEncontrada;
     }
 
-    public async Task<Tarefa?> AtualizarTarefa(int id, Tarefa tarefa)
+    public async Task<Tarefa?> AtualizarTarefa(int id, AtualizarTarefaRequest tarefa)
     {
         var tarefaEncontrada = await _dbContext.Tarefas.
             FirstOrDefaultAsync(t => t.Id == id);
