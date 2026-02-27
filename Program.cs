@@ -1,5 +1,7 @@
+using FluentValidation;
 using ListaDeTarefas.Data;
 using ListaDeTarefas.Services;
+using ListaDeTarefas.Validators;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,8 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStore
 builder.Services.AddAuthorization();
 
 builder.Services.AddScoped<ITarefaService, TarefaService>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<TarefaValidator>();
 
 builder.Services.AddControllers();
 

@@ -1,3 +1,4 @@
+using FluentValidation;
 using ListaDeTarefas.Models;
 using ListaDeTarefas.Models.Dtos;
 using ListaDeTarefas.Services;
@@ -12,17 +13,18 @@ namespace ListaDeTarefas.Controllers;
 public class TarefaController : ControllerBase
 {
     private readonly ITarefaService _service;
+    private readonly IValidator<CriarTarefaRequest> _validator;
 
-    public TarefaController(ITarefaService service)
+    public TarefaController(ITarefaService service, IValidator<CriarTarefaRequest> validator)
     {
         _service = service;
+        _validator = validator;
     }
     
     [HttpPost]
     public async Task<ActionResult<TarefaResponse>> CriarTarefa([FromBody] CriarTarefaRequest request)
     {
-        var validator = new TarefaValidator();
-        var result = await validator.ValidateAsync(request);
+        var result = await _validator.ValidateAsync(request);
 
         if (!result.IsValid)
             return BadRequest(result.Errors.Select(e => e.ErrorMessage));
