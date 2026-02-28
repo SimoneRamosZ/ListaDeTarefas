@@ -72,6 +72,6 @@ Se você quiser sugerir melhorias ou adicionar funcionalidades, abra uma *issue*
 
 ## 📝 Licença
 
-Este projeto está sob a licença **MIT**, permitindo uso, modificação e distribuição livremente.
+Este projeto está sob a licença **MIT**, permitindo uso, modificação e distribuição livremente. 
 
 ---
