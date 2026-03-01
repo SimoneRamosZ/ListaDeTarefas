@@ -1,7 +1,7 @@
-using ListaDeTarefas.Models;
-using ListaDeTarefas.Models.Dtos;
+using ListaDeTarefas.Api.Models;
+using ListaDeTarefas.Api.Models.Dtos;
 
-namespace ListaDeTarefas.Services;
+namespace ListaDeTarefas.Api.Services;
 
 public interface ITarefaService
 {

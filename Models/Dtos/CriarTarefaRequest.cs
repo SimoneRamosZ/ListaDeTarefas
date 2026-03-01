@@ -1,4 +1,4 @@
-namespace ListaDeTarefas.Models.Dtos;
+namespace ListaDeTarefas.Api.Models.Dtos;
 
 public record CriarTarefaRequest(
     string Titulo,

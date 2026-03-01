@@ -1,4 +1,4 @@
-namespace ListaDeTarefas.Models;
+namespace ListaDeTarefas.Api.Models;
 
 public class Tarefa
 {

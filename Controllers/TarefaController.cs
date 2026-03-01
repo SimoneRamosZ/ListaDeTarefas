@@ -1,12 +1,12 @@
 using FluentValidation;
-using ListaDeTarefas.Models;
-using ListaDeTarefas.Models.Dtos;
-using ListaDeTarefas.Services;
-using ListaDeTarefas.Validators;
+using ListaDeTarefas.Api.Models;
+using ListaDeTarefas.Api.Models.Dtos;
+using ListaDeTarefas.Api.Services;
+using ListaDeTarefas.Api.Validators;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ListaDeTarefas.Controllers;
+namespace ListaDeTarefas.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]

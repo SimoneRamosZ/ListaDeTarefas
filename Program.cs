@@ -1,7 +1,7 @@
 using FluentValidation;
-using ListaDeTarefas.Data;
-using ListaDeTarefas.Services;
-using ListaDeTarefas.Validators;
+using ListaDeTarefas.Api.Data;
+using ListaDeTarefas.Api.Services;
+using ListaDeTarefas.Api.Validators;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

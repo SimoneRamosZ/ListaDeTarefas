@@ -1,8 +1,8 @@
 using FluentValidation;
-using ListaDeTarefas.Models;
-using ListaDeTarefas.Models.Dtos;
+using ListaDeTarefas.Api.Models.Dtos;
+using ListaDeTarefas.Api.Models;
 
-namespace ListaDeTarefas.Validators;
+namespace ListaDeTarefas.Api.Validators;
 
 public class TarefaValidator : AbstractValidator<CriarTarefaRequest>
 {

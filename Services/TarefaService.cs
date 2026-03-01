@@ -1,9 +1,9 @@
-using ListaDeTarefas.Data;
-using ListaDeTarefas.Models;
-using ListaDeTarefas.Models.Dtos;
+using ListaDeTarefas.Api.Data;
+using ListaDeTarefas.Api.Models;
+using ListaDeTarefas.Api.Models.Dtos;
 using Microsoft.EntityFrameworkCore;
 
-namespace ListaDeTarefas.Services;
+namespace ListaDeTarefas.Api.Services;
 
 public class TarefaService : ITarefaService
 {

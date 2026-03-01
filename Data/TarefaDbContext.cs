@@ -1,8 +1,8 @@
-using ListaDeTarefas.Models;
+using ListaDeTarefas.Api.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace ListaDeTarefas.Data;
+namespace ListaDeTarefas.Api.Data;
 
 public class TarefaDbContext : IdentityDbContext
 {
