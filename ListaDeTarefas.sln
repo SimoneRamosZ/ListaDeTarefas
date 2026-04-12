@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11626.173 insiders
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListaDeTarefas.Api", "ListaDeTarefas.Api.csproj", "{961A732C-30F9-47F3-B2A1-1A618605AEBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListaDeTarefas.Test", "..\ListaDeTarefas.Test\ListaDeTarefas.Test.csproj", "{58DB3515-99F7-494A-9C7C-93A0D49893CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,15 @@ Global
 		{961A732C-30F9-47F3-B2A1-1A618605AEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{961A732C-30F9-47F3-B2A1-1A618605AEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{961A732C-30F9-47F3-B2A1-1A618605AEBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58DB3515-99F7-494A-9C7C-93A0D49893CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58DB3515-99F7-494A-9C7C-93A0D49893CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58DB3515-99F7-494A-9C7C-93A0D49893CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58DB3515-99F7-494A-9C7C-93A0D49893CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A58612E-076E-45A1-B36B-205E1D5945DB}
 	EndGlobalSection
 EndGlobal
