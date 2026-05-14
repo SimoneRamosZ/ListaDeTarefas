@@ -24,10 +24,10 @@ Ele foi criado com foco em:
 
 ## 🚀 Funcionalidades
 
-✔ Adicionar novas tarefas
-✔ Marcar tarefas como completas
-✔ Visualizar lista de tarefas ordenadas
-✔ Estrutura modular com separação de responsabilidades
+- ✔ Adicionar novas tarefas
+- ✔ Marcar tarefas como completas
+- ✔ Visualizar lista de tarefas ordenadas
+- ✔ Estrutura modular com separação de responsabilidades
 
 > *Possibilidades futuras:* filtros por status, API com frontend completo.
 
@@ -35,12 +35,12 @@ Ele foi criado com foco em:
 
 ## 🧪 Tecnologias Utilizadas
 
-✔ **C#**
-✔ **.NET 10**
-✔ Arquitetura em camadas
-✔ Validações de dados (FluentValidation)
-✔ Banco de dados SQLite
-✔ Autenticação (ASP.NET Core Identity)
+- ✔ **C#**
+- ✔ **.NET 10**
+- ✔ Arquitetura em camadas
+- ✔ Validações de dados (FluentValidation)
+- ✔ Banco de dados SQLite
+- ✔ Autenticação (ASP.NET Core Identity)
 
 ---
 
